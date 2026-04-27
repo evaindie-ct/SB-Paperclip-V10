@@ -1,0 +1,8 @@
+.env
+.paperclip-current-company.json
+paperclip.cookie.txt
+node_modules/
+.DS_Store
+companies/san-bernardo/runtime/repair-output/*.log
+companies/san-bernardo/runtime/repair-output/*.tmp
+companies/san-bernardo/runtime/repair-output/last-*.json

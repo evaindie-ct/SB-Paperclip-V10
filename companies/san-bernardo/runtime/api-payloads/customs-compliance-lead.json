@@ -1,0 +1,32 @@
+{
+  "name": "Customs / Compliance Lead",
+  "role": "general",
+  "title": "Customs / Compliance Lead",
+  "reportsTo": "industrial-director",
+  "capabilities": "Business role: customs_compliance_lead\nOwn customs, HS code logic, import documents, origin rules, duties, Incoterms, and EU/UK/Norway/Switzerland import implications",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/customs-compliance-lead/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Customs / Compliance Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 86400,
+    "recommended": "Daily/weekly monitoring depending on active deadlines"
+  },
+  "budgetMonthlyCents": 6000
+}

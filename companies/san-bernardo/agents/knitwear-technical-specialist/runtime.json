@@ -1,0 +1,80 @@
+{
+  "name": "Knitwear Technical Specialist",
+  "slug": "knitwear-technical-specialist",
+  "role": "researcher",
+  "title": "Knitwear Technical Specialist",
+  "reportsTo": "creative-direction-approval",
+  "paperclipReportsTo": "creative-direction-approval",
+  "capabilities": [
+    "Own knitwear-specific technical judgment: gauge, yarn count, ply, handfeel, shrinkage, pilling, construction, and stitch feasibility",
+    "Evaluate Shima/Stoll machine feasibility, WholeGarment constraints, jacquard/intarsia/cable feasibility, and wales/courses implications",
+    "Review merino/alpaca behavior, shade-card constraints, RWS evidence, composition, and care risks",
+    "Reject vague or technically impossible textile/product language"
+  ],
+  "budgetMonthlyCents": 6000,
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/knitwear-technical-specialist/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/knitwear-technical-specialist/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/knitwear-technical-specialist/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Knitwear Technical Specialist for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 80,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "businessRole": "knitwear_technical_specialist"
+}

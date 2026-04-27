@@ -1,0 +1,32 @@
+{
+  "name": "Operations Coordinator",
+  "role": "pm",
+  "title": "Operations Coordinator",
+  "reportsTo": "hermes-agent",
+  "capabilities": "Business role: operations_coordinator\nRun the operating cadence, intake queue, cross-department task routing, and weekly review\nConvert broad objectives into owners, deadlines, outputs, and escalation points\nPrevent duplicate work and uncontrolled agent drift",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/operations-coordinator/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Operations Coordinator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 3600,
+    "recommended": "Hourly or twice daily once stable"
+  },
+  "budgetMonthlyCents": 5000
+}

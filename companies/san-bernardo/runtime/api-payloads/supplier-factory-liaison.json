@@ -1,0 +1,32 @@
+{
+  "name": "Supplier / Factory Liaison",
+  "role": "general",
+  "title": "Supplier / Factory Liaison",
+  "reportsTo": "industrial-director",
+  "capabilities": "Business role: supplier_factory_liaison\nCommunicate with suppliers/factories using concise factory-readable questions\nTrack responses, quotes, sample status, payment terms, lead times, and risks",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/supplier-factory-liaison/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Supplier / Factory Liaison for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "budgetMonthlyCents": 3500
+}

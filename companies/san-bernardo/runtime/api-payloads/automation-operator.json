@@ -1,0 +1,31 @@
+{
+  "name": "Automation Operator",
+  "role": "devops",
+  "title": "Automation Operator",
+  "reportsTo": "operations-coordinator",
+  "capabilities": "Business role: automation_operator\nOwn automation setup, Hermes cron coordination, browser job specifications, scripts, repository hygiene, and operational automation guardrails",
+  "adapterType": "codex_local",
+  "adapterConfig": {
+    "command": "codex",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/automation-operator/instructions.md",
+    "model": "gpt-5.5",
+    "modelReasoningEffort": "medium",
+    "search": true,
+    "promptTemplate": "You are {{agent.name}}, Automation Operator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "dangerouslyBypassApprovalsAndSandbox": false,
+    "extraArgs": [],
+    "env": {
+      "OPENAI_API_KEY": "${secrets.openai_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "budgetMonthlyCents": 5000
+}

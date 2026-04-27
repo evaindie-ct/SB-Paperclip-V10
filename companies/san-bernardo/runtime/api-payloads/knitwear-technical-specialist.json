@@ -1,0 +1,32 @@
+{
+  "name": "Knitwear Technical Specialist",
+  "role": "researcher",
+  "title": "Knitwear Technical Specialist",
+  "reportsTo": "creative-direction-approval",
+  "capabilities": "Business role: knitwear_technical_specialist\nOwn knitwear-specific technical judgment: gauge, yarn count, ply, handfeel, shrinkage, pilling, construction, and stitch feasibility\nEvaluate Shima/Stoll machine feasibility, WholeGarment constraints, jacquard/intarsia/cable feasibility, and wales/courses implications\nReview merino/alpaca behavior, shade-card constraints, RWS evidence, composition, and care risks\nReject vague or technically impossible textile/product language",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/knitwear-technical-specialist/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Knitwear Technical Specialist for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 80,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "budgetMonthlyCents": 6000
+}

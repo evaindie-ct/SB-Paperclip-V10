@@ -1,0 +1,2949 @@
+{
+  "schema": "san-bernardo-paperclip-runtime/v5",
+  "createdAt": "2026-04-25T10:49:16Z",
+  "company": {
+    "name": "San Bernardo",
+    "slug": "san-bernardo",
+    "description": "Knitwear fashion brand business",
+    "goal": "Build and operate San Bernardo as a premium Patagonia-inspired knitwear company selling in Europe and the UK with disciplined product, production, ecommerce, finance, automation, and compliance operations."
+  },
+  "runtimeNotes": [
+    "v10 fixes Paperclip role enum validation by using only accepted API roles: ceo, cto, cmo, cfo, engineer, designer, pm, qa, devops, researcher, general.",
+    "Business-specific roles are preserved as businessRole, title, capabilities, and instruction files.",
+    "Paperclip runtime root is CEO; Hermes Agent reports to CEO.",
+    "Human Owner remains governance metadata only and is not seeded as an autonomous Paperclip agent.",
+    "Optional Hermes-local overlay; install/register the Hermes Paperclip adapter before using."
+  ],
+  "runtime_version": "v10",
+  "agents": [
+    {
+      "name": "Human Owner",
+      "slug": "human-owner",
+      "role": "general",
+      "title": "Human Owner / Board Governance",
+      "reportsTo": null,
+      "paperclipReportsTo": null,
+      "capabilities": [
+        "Act as external board owner and final human approver",
+        "Approve or reject governance-critical actions",
+        "Control budgets, secrets, irreversible changes, and legal/financial commitments",
+        "Review escalation reports from Hermes Agent"
+      ],
+      "budgetMonthlyCents": 0,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": null,
+        "recommended": "Manual board review only"
+      },
+      "tools": [
+        "approvals",
+        "budget-control",
+        "governance"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": false,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/human-owner/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/human-owner/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "external_human",
+      "adapterConfig": {
+        "enabled": false,
+        "mode": "external_human_approver",
+        "note": "This is the human owner/board node, not an autonomous Paperclip agent. Do not seed as an executable agent unless your Paperclip instance supports human pseudo-agents."
+      },
+      "businessRole": "human_owner"
+    },
+    {
+      "name": "CEO",
+      "slug": "ceo",
+      "role": "ceo",
+      "businessRole": "ceo",
+      "title": "Chief Executive Officer",
+      "reportsTo": null,
+      "paperclipReportsTo": null,
+      "capabilities": [
+        "Act as the top Paperclip runtime executive for San Bernardo",
+        "Set company priorities and translate human-owner direction into operating decisions",
+        "Supervise Hermes Agent and approve major cross-department tradeoffs",
+        "Escalate contracts, payments, tax/legal filings, production orders, and brand-risk decisions to the human owner",
+        "Maintain strategic focus on San Bernardo as a knitwear fashion brand business"
+      ],
+      "budgetMonthlyCents": 10000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Enable only after budgets/secrets/adapters are verified"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/ceo/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/ceo/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance",
+          "H: Automation / reporting / data / operating system"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/ceo/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, CEO for San Bernardo. Review assigned Paperclip tasks, supervise Hermes Agent, enforce operating priorities, and escalate irreversible commitments to the human owner.",
+        "maxTurnsPerRun": 100,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      }
+    },
+    {
+      "name": "Hermes Agent",
+      "slug": "hermes-agent",
+      "role": "general",
+      "title": "Hermes Agent / Chief Operating Orchestrator",
+      "reportsTo": "ceo",
+      "paperclipReportsTo": "ceo",
+      "capabilities": [
+        "Operate as the main AI operating orchestrator under the CEO",
+        "Triage work, assign tasks, review outputs, and maintain company-level execution rhythm",
+        "Coordinate San Bernardo departments through Paperclip tasks and escalation rules",
+        "Escalate budget, legal, factory, tax, or brand-risk decisions to the CEO/human owner"
+      ],
+      "budgetMonthlyCents": 10000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 1800,
+        "recommended": "Enable only after budgets/secrets/adapters are verified"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/hermes-agent/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/hermes-agent/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/hermes-agent/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Hermes Agent for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 100,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "governanceReportsTo": "human-owner",
+      "businessRole": "hermes_agent"
+    },
+    {
+      "name": "Librarian Worker",
+      "slug": "librarian-worker",
+      "role": "researcher",
+      "title": "Librarian Worker",
+      "reportsTo": "hermes-agent",
+      "paperclipReportsTo": "hermes-agent",
+      "capabilities": [
+        "Build and maintain a living source library for books, links, documents, forms, instructions, skills, repositories, tools, scores, papers, file paths, and lookup maps",
+        "Index all source packs, operating cards, prompts, queues, regulatory pages, and supplier materials",
+        "Prevent knowledge loss by linking every worker to sources and file paths"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "repository-index",
+        "source-library",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ]
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/librarian-worker/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/librarian-worker/AGENTS.md",
+        "sourcePacks": []
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/librarian-worker/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Librarian Worker for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "librarian_worker"
+    },
+    {
+      "name": "Operations Coordinator",
+      "slug": "operations-coordinator",
+      "role": "pm",
+      "title": "Operations Coordinator",
+      "reportsTo": "hermes-agent",
+      "paperclipReportsTo": "hermes-agent",
+      "capabilities": [
+        "Run the operating cadence, intake queue, cross-department task routing, and weekly review",
+        "Convert broad objectives into owners, deadlines, outputs, and escalation points",
+        "Prevent duplicate work and uncontrolled agent drift"
+      ],
+      "budgetMonthlyCents": 5000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Hourly or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ]
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/operations-coordinator/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/operations-coordinator/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/operations-coordinator/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Operations Coordinator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "operations_coordinator"
+    },
+    {
+      "name": "Sales Director",
+      "slug": "sales-director",
+      "role": "cmo",
+      "title": "Sales Director",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own commercial growth architecture across direct sales, wholesale/B2B, market research, ecommerce, catalog, and customer functions",
+        "Coordinate sales priorities with operations and finance"
+      ],
+      "budgetMonthlyCents": 5000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Hourly or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/sales-director/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/sales-director/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/sales-director/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Sales Director for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "sales_director"
+    },
+    {
+      "name": "Sales Lead",
+      "slug": "sales-lead",
+      "role": "cmo",
+      "title": "Sales Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own sales outreach, pipeline hygiene, account notes, objections, and follow-ups",
+        "Produce clear sales actions and next-step trackers"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/sales-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/sales-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/sales-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": true,
+        "promptTemplate": "You are {{agent.name}}, Sales Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "sales_lead"
+    },
+    {
+      "name": "Web Design / Ecommerce Lead",
+      "slug": "web-design-ecommerce-lead",
+      "role": "designer",
+      "title": "Web Design / Ecommerce Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own ecommerce UX, customer journey, site structure, product page logic, CRO recommendations, and web design consistency",
+        "Review Shopify storefront decisions against brand and conversion goals"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/web-design-ecommerce-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/web-design-ecommerce-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "codex_local",
+      "adapterConfig": {
+        "command": "codex",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/web-design-ecommerce-lead/instructions.md",
+        "model": "gpt-5.5",
+        "modelReasoningEffort": "medium",
+        "search": true,
+        "promptTemplate": "You are {{agent.name}}, Web Design / Ecommerce Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "dangerouslyBypassApprovalsAndSandbox": false,
+        "extraArgs": [],
+        "env": {
+          "OPENAI_API_KEY": "${secrets.openai_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "web_design_ecommerce_lead"
+    },
+    {
+      "name": "Automation Operator",
+      "slug": "automation-operator",
+      "role": "devops",
+      "title": "Automation Operator",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own automation setup, Hermes cron coordination, browser job specifications, scripts, repository hygiene, and operational automation guardrails"
+      ],
+      "budgetMonthlyCents": 5000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "cron",
+        "file",
+        "git",
+        "paperclip",
+        "terminal",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**",
+            "scripts/**",
+            ".github/**",
+            "package.json"
+          ],
+          "write": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**",
+            "scripts/**",
+            ".github/**",
+            "package.json"
+          ]
+        },
+        "browser": true,
+        "network": true,
+        "shell": true,
+        "git": true,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/automation-operator/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/automation-operator/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "codex_local",
+      "adapterConfig": {
+        "command": "codex",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/automation-operator/instructions.md",
+        "model": "gpt-5.5",
+        "modelReasoningEffort": "medium",
+        "search": true,
+        "promptTemplate": "You are {{agent.name}}, Automation Operator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "dangerouslyBypassApprovalsAndSandbox": false,
+        "extraArgs": [],
+        "env": {
+          "OPENAI_API_KEY": "${secrets.openai_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "automation_operator"
+    },
+    {
+      "name": "B2B Sales Lead",
+      "slug": "b2b-sales-lead",
+      "role": "cmo",
+      "title": "B2B Sales Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own wholesale/B2B targets, retailer outreach, buyer research, trade-show prep, and account qualification",
+        "Coordinate with market research and finance before commercial commitments"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/b2b-sales-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/b2b-sales-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/b2b-sales-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": true,
+        "promptTemplate": "You are {{agent.name}}, B2B Sales Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "b2b_sales_lead"
+    },
+    {
+      "name": "Commercial Finance Lead",
+      "slug": "commercial-finance-lead",
+      "role": "cfo",
+      "title": "Commercial Finance Lead",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own commercial finance logic: prices, landed cost, margins, budgets, cash discipline, payment timing, and financial decision support"
+      ],
+      "budgetMonthlyCents": 7500,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Hourly or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/commercial-finance-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/commercial-finance-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/commercial-finance-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Commercial Finance Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "commercial_finance_lead"
+    },
+    {
+      "name": "Creative Direction Approval",
+      "slug": "creative-direction-approval",
+      "role": "pm",
+      "title": "Creative Direction Approval",
+      "reportsTo": "hermes-agent",
+      "paperclipReportsTo": "hermes-agent",
+      "capabilities": [
+        "Approve creative direction before execution by design, marketing, textile, tech pack, template, and packaging workers",
+        "Protect brand coherence: Patagonia/Bariloche heritage, elevated knitwear, editorial tension, and non-generic luxury",
+        "Reject work that dilutes San Bernardo into generic DTC fashion"
+      ],
+      "budgetMonthlyCents": 7500,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Hourly or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/creative-direction-approval/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/creative-direction-approval/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/creative-direction-approval/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Creative Direction Approval for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "creative_direction_approval"
+    },
+    {
+      "name": "Customer Service Lead",
+      "slug": "customer-service-lead",
+      "role": "general",
+      "title": "Customer Service Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own customer-service macros, refund/return scripts, escalation logic, FAQ, and response quality",
+        "Escalate legal, payment, safety, or reputational issues"
+      ],
+      "budgetMonthlyCents": 1500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/customer-service-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/customer-service-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/customer-service-lead/instructions.md",
+        "model": "claude-haiku-4-5-20251001",
+        "effort": "low",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Customer Service Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 25,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 600,
+        "graceSec": 30
+      },
+      "businessRole": "customer_service_lead"
+    },
+    {
+      "name": "Customer Success / Implementation Lead",
+      "slug": "customer-success-implementation-lead",
+      "role": "general",
+      "title": "Customer Success / Implementation Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own customer implementation/support flows for high-touch accounts and B2B buyers",
+        "Coordinate onboarding, instructions, and post-sale support processes"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/customer-success-implementation-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/customer-success-implementation-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/customer-success-implementation-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Customer Success / Implementation Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "customer_success_implementation_lead"
+    },
+    {
+      "name": "Data / Reporting Operator",
+      "slug": "data-reporting-operator",
+      "role": "researcher",
+      "title": "Data / Reporting Operator",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own reporting tables, KPI dashboards, weekly operating metrics, source data cleaning, and structured status summaries"
+      ],
+      "budgetMonthlyCents": 1500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/data-reporting-operator/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/data-reporting-operator/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/data-reporting-operator/instructions.md",
+        "model": "claude-haiku-4-5-20251001",
+        "effort": "low",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Data / Reporting Operator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 25,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 600,
+        "graceSec": 30
+      },
+      "businessRole": "data_reporting_operator"
+    },
+    {
+      "name": "Design Lead",
+      "slug": "design-lead",
+      "role": "designer",
+      "title": "Design Lead",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Develop product and visual design direction from approved creative strategy",
+        "Translate references into product/design briefs",
+        "Keep knitwear silhouettes, patterns, and collection logic coherent"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/design-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/design-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "E: Sales / market / wholesale / commercial research",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/design-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Design Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "design_lead"
+    },
+    {
+      "name": "Ecommerce Operations Lead",
+      "slug": "ecommerce-operations-lead",
+      "role": "pm",
+      "title": "Ecommerce Operations Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own Shopify operations, orders, returns, fulfillment handoffs, product publishing workflows, and store-operating SOPs",
+        "Coordinate with warehouse, customer service, catalog, and finance"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/ecommerce-operations-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/ecommerce-operations-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "codex_local",
+      "adapterConfig": {
+        "command": "codex",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/ecommerce-operations-lead/instructions.md",
+        "model": "gpt-5.5",
+        "modelReasoningEffort": "medium",
+        "search": true,
+        "promptTemplate": "You are {{agent.name}}, Ecommerce Operations Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "dangerouslyBypassApprovalsAndSandbox": false,
+        "extraArgs": [],
+        "env": {
+          "OPENAI_API_KEY": "${secrets.openai_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "ecommerce_operations_lead"
+    },
+    {
+      "name": "Finance / Collections Lead",
+      "slug": "finance-collections-lead",
+      "role": "cfo",
+      "title": "Finance / Collections Lead",
+      "reportsTo": "commercial-finance-lead",
+      "paperclipReportsTo": "commercial-finance-lead",
+      "capabilities": [
+        "Own invoice follow-up, collections, receivables tracking, payment confirmations, and finance admin routines"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/finance-collections-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/finance-collections-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/finance-collections-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Finance / Collections Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "finance_collections_lead"
+    },
+    {
+      "name": "Industrial Director",
+      "slug": "industrial-director",
+      "role": "pm",
+      "title": "Industrial Director",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own industrial execution: suppliers, factories, production planning, QC, customs, warehouse, procurement",
+        "Protect cost, quality, lead time, and supplier reliability"
+      ],
+      "budgetMonthlyCents": 7500,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 3600,
+        "recommended": "Hourly or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/industrial-director/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/industrial-director/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "F: Finance / tax / inventory / billing",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/industrial-director/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Industrial Director for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 80,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "industrial_director"
+    },
+    {
+      "name": "Inventory Planner",
+      "slug": "inventory-planner",
+      "role": "pm",
+      "title": "Inventory Planner",
+      "reportsTo": "commercial-finance-lead",
+      "paperclipReportsTo": "commercial-finance-lead",
+      "capabilities": [
+        "Own inventory logic, reorder points, stock coverage, size/color allocation, demand assumptions, and launch stock risk"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/inventory-planner/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/inventory-planner/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/inventory-planner/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Inventory Planner for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "inventory_planner"
+    },
+    {
+      "name": "Legal / IP / Corporate Affairs Lead",
+      "slug": "legal-ip-corporate-affairs-lead",
+      "role": "general",
+      "title": "Legal / IP / Corporate Affairs Lead",
+      "reportsTo": "operations-coordinator",
+      "paperclipReportsTo": "operations-coordinator",
+      "capabilities": [
+        "Own trademark/IP tracking, corporate admin, contracts checklisting, legal-risk flags, privacy/compliance routing, and escalation to professional counsel"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 86400,
+        "recommended": "Daily/weekly monitoring depending on active deadlines"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/legal-ip-corporate-affairs-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/legal-ip-corporate-affairs-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/legal-ip-corporate-affairs-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Legal / IP / Corporate Affairs Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "legal_ip_corporate_affairs_lead"
+    },
+    {
+      "name": "Market Research / Directory Research Lead",
+      "slug": "market-research-directory-research-lead",
+      "role": "researcher",
+      "title": "Market Research / Directory Research Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Research buyers, retailers, directories, competitors, markets, trade shows, and sourcing databases",
+        "Provide cited, structured leads with contact and qualification data"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/market-research-directory-research-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/market-research-directory-research-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/market-research-directory-research-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": true,
+        "promptTemplate": "You are {{agent.name}}, Market Research / Directory Research Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "market_research_directory_research_lead"
+    },
+    {
+      "name": "Marketing Lead",
+      "slug": "marketing-lead",
+      "role": "cmo",
+      "title": "Marketing Lead",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Own campaign concepts, content angles, launch messaging, and audience positioning",
+        "Convert creative direction into marketing briefs and channel-ready copy",
+        "Coordinate with ecommerce and sales workers"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/marketing-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/marketing-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/marketing-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Marketing Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "marketing_lead"
+    },
+    {
+      "name": "Packaging Designer",
+      "slug": "packaging-designer",
+      "role": "designer",
+      "title": "Packaging Designer",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Own packaging design files, print specs, Pantone/CMYK notes, supplier-ready artwork, hangtags, labels, bags, and inserts",
+        "Coordinate packaging compliance, EPR requirements, and press/vendor constraints"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/packaging-designer/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/packaging-designer/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/packaging-designer/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Packaging Designer for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "packaging_designer"
+    },
+    {
+      "name": "Procurement Lead",
+      "slug": "procurement-lead",
+      "role": "general",
+      "title": "Procurement Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Own purchasing workflows, supplier quotes, purchase order checklists, packaging/material procurement, and cost/lead-time comparison"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/procurement-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/procurement-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "F: Finance / tax / inventory / billing",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/procurement-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Procurement Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "procurement_lead"
+    },
+    {
+      "name": "Product Catalog Lead",
+      "slug": "product-catalog-lead",
+      "role": "pm",
+      "title": "Product Catalog Lead",
+      "reportsTo": "sales-director",
+      "paperclipReportsTo": "sales-director",
+      "capabilities": [
+        "Own product catalog data: names, SKUs, variants, sizes, colors, descriptions, imagery fields, materials, care, and SEO fields",
+        "Ensure catalog accuracy before publication"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "browser",
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": true,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/product-catalog-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/product-catalog-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/product-catalog-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": true,
+        "promptTemplate": "You are {{agent.name}}, Product Catalog Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "product_catalog_lead"
+    },
+    {
+      "name": "Production Planning & Technical Lead",
+      "slug": "production-planning-and-technical-lead",
+      "role": "pm",
+      "title": "Production Planning & Technical Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Own production calendar, sampling timeline, approvals, purchase-order milestones, bottlenecks, and technical execution risks",
+        "Coordinate with tech pack, textile, supplier liaison, factory sourcing, procurement, and QC"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/production-planning-and-technical-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/production-planning-and-technical-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/production-planning-and-technical-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Production Planning & Technical Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "production_planning_and_technical_lead"
+    },
+    {
+      "name": "Quality & Certification Lead",
+      "slug": "quality-and-certification-lead",
+      "role": "qa",
+      "title": "Quality & Certification Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Own QC requirements, AQL inspection logic, measurements tolerance, defect taxonomy, fiber/certification evidence, care-label compliance, and inspection checklists"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 86400,
+        "recommended": "Daily/weekly monitoring depending on active deadlines"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/quality-and-certification-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/quality-and-certification-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/quality-and-certification-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Quality & Certification Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "quality_and_certification_lead"
+    },
+    {
+      "name": "Supplier / Factory Liaison",
+      "slug": "supplier-factory-liaison",
+      "role": "general",
+      "title": "Supplier / Factory Liaison",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Communicate with suppliers/factories using concise factory-readable questions",
+        "Track responses, quotes, sample status, payment terms, lead times, and risks"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/supplier-factory-liaison/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/supplier-factory-liaison/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/supplier-factory-liaison/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Supplier / Factory Liaison for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "supplier_factory_liaison"
+    },
+    {
+      "name": "Tax / Accounting Lead",
+      "slug": "tax-accounting-lead",
+      "role": "cfo",
+      "title": "Tax / Accounting Lead",
+      "reportsTo": "commercial-finance-lead",
+      "paperclipReportsTo": "commercial-finance-lead",
+      "capabilities": [
+        "Own Spanish SL tax calendar, IRPF withholding-related models, AEAT forms, EU OSS VAT, UK VAT monitoring, Modelo 303/390/349/111/190/200/202 agenda, bookkeeping handoff checklists, and filing deadline reminders"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 86400,
+        "recommended": "Daily/weekly monitoring depending on active deadlines"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/tax-accounting-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/tax-accounting-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/tax-accounting-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Tax / Accounting Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 80,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "tax_accounting_lead"
+    },
+    {
+      "name": "Tech Pack / Product Development Lead",
+      "slug": "tech-pack-product-development-lead",
+      "role": "pm",
+      "title": "Tech Pack / Product Development Lead",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Own tech pack completeness, factory readability, POMs, grading logic, construction notes, BOM, yarn specs, and sample correction loops",
+        "Translate designer intent into factory-executable knitwear specifications",
+        "Coordinate with textile specialist, factory liaison, and production planning"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/tech-pack-product-development-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/tech-pack-product-development-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/tech-pack-product-development-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Tech Pack / Product Development Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "tech_pack_product_development_lead"
+    },
+    {
+      "name": "Template / Production Designer",
+      "slug": "template-production-designer",
+      "role": "designer",
+      "title": "Template / Production Designer",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Create and maintain factory-readable templates for tech packs, BOMs, labels, packaging, inspection sheets, and operational docs",
+        "Keep templates short, consistent, and directly usable by suppliers"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/template-production-designer/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/template-production-designer/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "E: Sales / market / wholesale / commercial research",
+          "H: Packaging / EPR / environmental packaging compliance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/template-production-designer/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Template / Production Designer for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "template_production_designer"
+    },
+    {
+      "name": "Knitwear Technical Specialist",
+      "slug": "knitwear-technical-specialist",
+      "role": "researcher",
+      "title": "Knitwear Technical Specialist",
+      "reportsTo": "creative-direction-approval",
+      "paperclipReportsTo": "creative-direction-approval",
+      "capabilities": [
+        "Own knitwear-specific technical judgment: gauge, yarn count, ply, handfeel, shrinkage, pilling, construction, and stitch feasibility",
+        "Evaluate Shima/Stoll machine feasibility, WholeGarment constraints, jacquard/intarsia/cable feasibility, and wales/courses implications",
+        "Review merino/alpaca behavior, shade-card constraints, RWS evidence, composition, and care risks",
+        "Reject vague or technically impossible textile/product language"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "fat",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/knitwear-technical-specialist/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/knitwear-technical-specialist/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/knitwear-technical-specialist/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Knitwear Technical Specialist for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 80,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "knitwear_technical_specialist"
+    },
+    {
+      "name": "Warehouse Lead",
+      "slug": "warehouse-lead",
+      "role": "general",
+      "title": "Warehouse Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Own storage, inbound/outbound inventory process, pick/pack handoffs, low-volume fulfillment routines, and warehouse checklists"
+      ],
+      "budgetMonthlyCents": 1500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/warehouse-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/warehouse-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/warehouse-lead/instructions.md",
+        "model": "claude-haiku-4-5-20251001",
+        "effort": "low",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Warehouse Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 25,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 600,
+        "graceSec": 30
+      },
+      "businessRole": "warehouse_lead"
+    },
+    {
+      "name": "Billing / Subscription Operations Lead",
+      "slug": "billing-subscription-operations-lead",
+      "role": "cfo",
+      "title": "Billing / Subscription Operations Lead",
+      "reportsTo": "commercial-finance-lead",
+      "paperclipReportsTo": "commercial-finance-lead",
+      "capabilities": [
+        "Own billing operations, recurring/vendor subscriptions, invoice checks, SaaS spend, and subscription cancellation/renewal tracking"
+      ],
+      "budgetMonthlyCents": 1500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": false,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/billing-subscription-operations-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/billing-subscription-operations-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "D: Ecommerce / catalog / customer service / customer data",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/billing-subscription-operations-lead/instructions.md",
+        "model": "claude-haiku-4-5-20251001",
+        "effort": "low",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Billing / Subscription Operations Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 25,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 600,
+        "graceSec": 30
+      },
+      "businessRole": "billing_subscription_operations_lead"
+    },
+    {
+      "name": "Customs / Compliance Lead",
+      "slug": "customs-compliance-lead",
+      "role": "general",
+      "title": "Customs / Compliance Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Own customs, HS code logic, import documents, origin rules, duties, Incoterms, and EU/UK/Norway/Switzerland import implications"
+      ],
+      "budgetMonthlyCents": 6000,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 86400,
+        "recommended": "Daily/weekly monitoring depending on active deadlines"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/customs-compliance-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/customs-compliance-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "C: Industrial / suppliers / factory / customs / production",
+          "F: Finance / tax / inventory / billing",
+          "G: Legal / IP / privacy / corporate governance"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/customs-compliance-lead/instructions.md",
+        "model": "claude-opus-4-7",
+        "effort": "high",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Customs / Compliance Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1800,
+        "graceSec": 30
+      },
+      "businessRole": "customs_compliance_lead"
+    },
+    {
+      "name": "Factory Sourcing Lead",
+      "slug": "factory-sourcing-lead",
+      "role": "researcher",
+      "title": "Factory Sourcing Lead",
+      "reportsTo": "industrial-director",
+      "paperclipReportsTo": "industrial-director",
+      "capabilities": [
+        "Find, qualify, score, and shortlist knitwear factories and relevant suppliers",
+        "Apply MOQ, lead time, payment-term, capability, and certification filters"
+      ],
+      "budgetMonthlyCents": 3500,
+      "contextMode": "thin",
+      "heartbeatSchedule": {
+        "enabled": false,
+        "intervalSec": 7200,
+        "recommended": "On-demand or twice daily once stable"
+      },
+      "tools": [
+        "file",
+        "paperclip",
+        "web"
+      ],
+      "permissions": {
+        "filesystem": {
+          "read": [
+            "companies/san-bernardo/**",
+            "original/**",
+            "docs/**"
+          ],
+          "write": []
+        },
+        "browser": false,
+        "network": true,
+        "shell": false,
+        "git": false,
+        "paperclipWrite": true,
+        "requiresHumanApprovalFor": [
+          "contracts",
+          "payments",
+          "factory commitments",
+          "tax/legal filings",
+          "public brand statements",
+          "production orders",
+          "customer refunds outside policy",
+          "new paid subscriptions"
+        ]
+      },
+      "source": {
+        "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+        "instructionFile": "companies/san-bernardo/agents/factory-sourcing-lead/instructions.md",
+        "agentFile": "companies/san-bernardo/agents/factory-sourcing-lead/AGENTS.md",
+        "sourcePacks": [
+          "A: Paperclip / agent operations / model configuration",
+          "B: Textile / knitwear / product development",
+          "C: Industrial / suppliers / factory / customs / production",
+          "E: Sales / market / wholesale / commercial research"
+        ]
+      },
+      "adapterType": "claude_local",
+      "adapterConfig": {
+        "command": "claude",
+        "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+        "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/factory-sourcing-lead/instructions.md",
+        "model": "claude-sonnet-4-6",
+        "effort": "medium",
+        "chrome": false,
+        "promptTemplate": "You are {{agent.name}}, Factory Sourcing Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+        "maxTurnsPerRun": 50,
+        "dangerouslySkipPermissions": false,
+        "extraArgs": [],
+        "env": {
+          "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+        },
+        "timeoutSec": 1200,
+        "graceSec": 30
+      },
+      "businessRole": "factory_sourcing_lead"
+    }
+  ]
+}

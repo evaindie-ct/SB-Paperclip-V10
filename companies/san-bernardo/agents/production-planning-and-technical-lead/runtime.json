@@ -1,0 +1,78 @@
+{
+  "name": "Production Planning & Technical Lead",
+  "slug": "production-planning-and-technical-lead",
+  "role": "pm",
+  "title": "Production Planning & Technical Lead",
+  "reportsTo": "industrial-director",
+  "paperclipReportsTo": "industrial-director",
+  "capabilities": [
+    "Own production calendar, sampling timeline, approvals, purchase-order milestones, bottlenecks, and technical execution risks",
+    "Coordinate with tech pack, textile, supplier liaison, factory sourcing, procurement, and QC"
+  ],
+  "budgetMonthlyCents": 6000,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/production-planning-and-technical-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/production-planning-and-technical-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/production-planning-and-technical-lead/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Production Planning & Technical Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "production_planning_and_technical_lead"
+}

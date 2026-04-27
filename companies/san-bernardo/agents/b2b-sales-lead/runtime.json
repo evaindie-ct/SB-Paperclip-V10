@@ -1,0 +1,81 @@
+{
+  "name": "B2B Sales Lead",
+  "slug": "b2b-sales-lead",
+  "role": "cmo",
+  "title": "B2B Sales Lead",
+  "reportsTo": "sales-director",
+  "paperclipReportsTo": "sales-director",
+  "capabilities": [
+    "Own wholesale/B2B targets, retailer outreach, buyer research, trade-show prep, and account qualification",
+    "Coordinate with market research and finance before commercial commitments"
+  ],
+  "budgetMonthlyCents": 3500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "browser",
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": true,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/b2b-sales-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/b2b-sales-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/b2b-sales-lead/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": true,
+    "promptTemplate": "You are {{agent.name}}, B2B Sales Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "b2b_sales_lead"
+}

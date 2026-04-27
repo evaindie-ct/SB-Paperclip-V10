@@ -1,0 +1,85 @@
+{
+  "name": "CEO",
+  "slug": "ceo",
+  "role": "ceo",
+  "businessRole": "ceo",
+  "title": "Chief Executive Officer",
+  "reportsTo": null,
+  "paperclipReportsTo": null,
+  "capabilities": [
+    "Act as the top Paperclip runtime executive for San Bernardo",
+    "Set company priorities and translate human-owner direction into operating decisions",
+    "Supervise Hermes Agent and approve major cross-department tradeoffs",
+    "Escalate contracts, payments, tax/legal filings, production orders, and brand-risk decisions to the human owner",
+    "Maintain strategic focus on San Bernardo as a knitwear fashion brand business"
+  ],
+  "budgetMonthlyCents": 10000,
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 3600,
+    "recommended": "Enable only after budgets/secrets/adapters are verified"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/ceo/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/ceo/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance",
+      "H: Automation / reporting / data / operating system"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/ceo/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, CEO for San Bernardo. Review assigned Paperclip tasks, supervise Hermes Agent, enforce operating priorities, and escalate irreversible commitments to the human owner.",
+    "maxTurnsPerRun": 100,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  }
+}

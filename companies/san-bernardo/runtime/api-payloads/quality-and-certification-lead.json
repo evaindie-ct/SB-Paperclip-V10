@@ -1,0 +1,32 @@
+{
+  "name": "Quality & Certification Lead",
+  "role": "qa",
+  "title": "Quality & Certification Lead",
+  "reportsTo": "industrial-director",
+  "capabilities": "Business role: quality_and_certification_lead\nOwn QC requirements, AQL inspection logic, measurements tolerance, defect taxonomy, fiber/certification evidence, care-label compliance, and inspection checklists",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/quality-and-certification-lead/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Quality & Certification Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 86400,
+    "recommended": "Daily/weekly monitoring depending on active deadlines"
+  },
+  "budgetMonthlyCents": 6000
+}

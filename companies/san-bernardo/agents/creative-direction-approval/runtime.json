@@ -1,0 +1,80 @@
+{
+  "name": "Creative Direction Approval",
+  "slug": "creative-direction-approval",
+  "role": "pm",
+  "title": "Creative Direction Approval",
+  "reportsTo": "hermes-agent",
+  "paperclipReportsTo": "hermes-agent",
+  "capabilities": [
+    "Approve creative direction before execution by design, marketing, textile, tech pack, template, and packaging workers",
+    "Protect brand coherence: Patagonia/Bariloche heritage, elevated knitwear, editorial tension, and non-generic luxury",
+    "Reject work that dilutes San Bernardo into generic DTC fashion"
+  ],
+  "budgetMonthlyCents": 7500,
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 3600,
+    "recommended": "Hourly or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/creative-direction-approval/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/creative-direction-approval/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/creative-direction-approval/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Creative Direction Approval for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "creative_direction_approval"
+}

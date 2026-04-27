@@ -1,0 +1,91 @@
+{
+  "name": "Automation Operator",
+  "slug": "automation-operator",
+  "role": "devops",
+  "title": "Automation Operator",
+  "reportsTo": "operations-coordinator",
+  "paperclipReportsTo": "operations-coordinator",
+  "capabilities": [
+    "Own automation setup, Hermes cron coordination, browser job specifications, scripts, repository hygiene, and operational automation guardrails"
+  ],
+  "budgetMonthlyCents": 5000,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "browser",
+    "cron",
+    "file",
+    "git",
+    "paperclip",
+    "terminal",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**",
+        "scripts/**",
+        ".github/**",
+        "package.json"
+      ],
+      "write": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**",
+        "scripts/**",
+        ".github/**",
+        "package.json"
+      ]
+    },
+    "browser": true,
+    "network": true,
+    "shell": true,
+    "git": true,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/automation-operator/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/automation-operator/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "codex_local",
+  "adapterConfig": {
+    "command": "codex",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/automation-operator/instructions.md",
+    "model": "gpt-5.5",
+    "modelReasoningEffort": "medium",
+    "search": true,
+    "promptTemplate": "You are {{agent.name}}, Automation Operator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "dangerouslyBypassApprovalsAndSandbox": false,
+    "extraArgs": [],
+    "env": {
+      "OPENAI_API_KEY": "${secrets.openai_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "businessRole": "automation_operator"
+}

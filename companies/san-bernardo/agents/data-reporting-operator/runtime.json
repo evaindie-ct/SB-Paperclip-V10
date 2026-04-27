@@ -1,0 +1,77 @@
+{
+  "name": "Data / Reporting Operator",
+  "slug": "data-reporting-operator",
+  "role": "researcher",
+  "title": "Data / Reporting Operator",
+  "reportsTo": "operations-coordinator",
+  "paperclipReportsTo": "operations-coordinator",
+  "capabilities": [
+    "Own reporting tables, KPI dashboards, weekly operating metrics, source data cleaning, and structured status summaries"
+  ],
+  "budgetMonthlyCents": 1500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/data-reporting-operator/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/data-reporting-operator/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/data-reporting-operator/instructions.md",
+    "model": "claude-haiku-4-5-20251001",
+    "effort": "low",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Data / Reporting Operator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 25,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 600,
+    "graceSec": 30
+  },
+  "businessRole": "data_reporting_operator"
+}

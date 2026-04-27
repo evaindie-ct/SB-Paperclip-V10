@@ -1,0 +1,79 @@
+{
+  "name": "Supplier / Factory Liaison",
+  "slug": "supplier-factory-liaison",
+  "role": "general",
+  "title": "Supplier / Factory Liaison",
+  "reportsTo": "industrial-director",
+  "paperclipReportsTo": "industrial-director",
+  "capabilities": [
+    "Communicate with suppliers/factories using concise factory-readable questions",
+    "Track responses, quotes, sample status, payment terms, lead times, and risks"
+  ],
+  "budgetMonthlyCents": 3500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/supplier-factory-liaison/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/supplier-factory-liaison/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/supplier-factory-liaison/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Supplier / Factory Liaison for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "supplier_factory_liaison"
+}

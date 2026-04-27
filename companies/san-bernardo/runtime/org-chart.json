@@ -1,0 +1,377 @@
+[
+  {
+    "slug": "human-owner",
+    "name": "Human Owner",
+    "role": "general",
+    "businessRole": "human_owner",
+    "reportsTo": null,
+    "paperclipReportsTo": null,
+    "children": []
+  },
+  {
+    "slug": "ceo",
+    "name": "CEO",
+    "role": "ceo",
+    "businessRole": "ceo",
+    "reportsTo": null,
+    "paperclipReportsTo": null,
+    "children": [
+      "hermes-agent"
+    ]
+  },
+  {
+    "slug": "hermes-agent",
+    "name": "Hermes Agent",
+    "role": "general",
+    "businessRole": "hermes_agent",
+    "reportsTo": "ceo",
+    "paperclipReportsTo": "ceo",
+    "children": [
+      "librarian-worker",
+      "operations-coordinator",
+      "creative-direction-approval"
+    ]
+  },
+  {
+    "slug": "librarian-worker",
+    "name": "Librarian Worker",
+    "role": "researcher",
+    "businessRole": "librarian_worker",
+    "reportsTo": "hermes-agent",
+    "paperclipReportsTo": "hermes-agent",
+    "children": []
+  },
+  {
+    "slug": "operations-coordinator",
+    "name": "Operations Coordinator",
+    "role": "pm",
+    "businessRole": "operations_coordinator",
+    "reportsTo": "hermes-agent",
+    "paperclipReportsTo": "hermes-agent",
+    "children": [
+      "sales-director",
+      "automation-operator",
+      "commercial-finance-lead",
+      "data-reporting-operator",
+      "industrial-director",
+      "legal-ip-corporate-affairs-lead"
+    ]
+  },
+  {
+    "slug": "sales-director",
+    "name": "Sales Director",
+    "role": "cmo",
+    "businessRole": "sales_director",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": [
+      "sales-lead",
+      "web-design-ecommerce-lead",
+      "b2b-sales-lead",
+      "customer-service-lead",
+      "customer-success-implementation-lead",
+      "ecommerce-operations-lead",
+      "market-research-directory-research-lead",
+      "product-catalog-lead"
+    ]
+  },
+  {
+    "slug": "sales-lead",
+    "name": "Sales Lead",
+    "role": "cmo",
+    "businessRole": "sales_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "web-design-ecommerce-lead",
+    "name": "Web Design / Ecommerce Lead",
+    "role": "designer",
+    "businessRole": "web_design_ecommerce_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "automation-operator",
+    "name": "Automation Operator",
+    "role": "devops",
+    "businessRole": "automation_operator",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": []
+  },
+  {
+    "slug": "b2b-sales-lead",
+    "name": "B2B Sales Lead",
+    "role": "cmo",
+    "businessRole": "b2b_sales_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "commercial-finance-lead",
+    "name": "Commercial Finance Lead",
+    "role": "cfo",
+    "businessRole": "commercial_finance_lead",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": [
+      "finance-collections-lead",
+      "inventory-planner",
+      "tax-accounting-lead",
+      "billing-subscription-operations-lead"
+    ]
+  },
+  {
+    "slug": "creative-direction-approval",
+    "name": "Creative Direction Approval",
+    "role": "pm",
+    "businessRole": "creative_direction_approval",
+    "reportsTo": "hermes-agent",
+    "paperclipReportsTo": "hermes-agent",
+    "children": [
+      "design-lead",
+      "marketing-lead",
+      "packaging-designer",
+      "tech-pack-product-development-lead",
+      "template-production-designer",
+      "knitwear-technical-specialist"
+    ]
+  },
+  {
+    "slug": "customer-service-lead",
+    "name": "Customer Service Lead",
+    "role": "general",
+    "businessRole": "customer_service_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "customer-success-implementation-lead",
+    "name": "Customer Success / Implementation Lead",
+    "role": "general",
+    "businessRole": "customer_success_implementation_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "data-reporting-operator",
+    "name": "Data / Reporting Operator",
+    "role": "researcher",
+    "businessRole": "data_reporting_operator",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": []
+  },
+  {
+    "slug": "design-lead",
+    "name": "Design Lead",
+    "role": "designer",
+    "businessRole": "design_lead",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "ecommerce-operations-lead",
+    "name": "Ecommerce Operations Lead",
+    "role": "pm",
+    "businessRole": "ecommerce_operations_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "finance-collections-lead",
+    "name": "Finance / Collections Lead",
+    "role": "cfo",
+    "businessRole": "finance_collections_lead",
+    "reportsTo": "commercial-finance-lead",
+    "paperclipReportsTo": "commercial-finance-lead",
+    "children": []
+  },
+  {
+    "slug": "industrial-director",
+    "name": "Industrial Director",
+    "role": "pm",
+    "businessRole": "industrial_director",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": [
+      "procurement-lead",
+      "production-planning-and-technical-lead",
+      "quality-and-certification-lead",
+      "supplier-factory-liaison",
+      "warehouse-lead",
+      "customs-compliance-lead",
+      "factory-sourcing-lead"
+    ]
+  },
+  {
+    "slug": "inventory-planner",
+    "name": "Inventory Planner",
+    "role": "pm",
+    "businessRole": "inventory_planner",
+    "reportsTo": "commercial-finance-lead",
+    "paperclipReportsTo": "commercial-finance-lead",
+    "children": []
+  },
+  {
+    "slug": "legal-ip-corporate-affairs-lead",
+    "name": "Legal / IP / Corporate Affairs Lead",
+    "role": "general",
+    "businessRole": "legal_ip_corporate_affairs_lead",
+    "reportsTo": "operations-coordinator",
+    "paperclipReportsTo": "operations-coordinator",
+    "children": []
+  },
+  {
+    "slug": "market-research-directory-research-lead",
+    "name": "Market Research / Directory Research Lead",
+    "role": "researcher",
+    "businessRole": "market_research_directory_research_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "marketing-lead",
+    "name": "Marketing Lead",
+    "role": "cmo",
+    "businessRole": "marketing_lead",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "packaging-designer",
+    "name": "Packaging Designer",
+    "role": "designer",
+    "businessRole": "packaging_designer",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "procurement-lead",
+    "name": "Procurement Lead",
+    "role": "general",
+    "businessRole": "procurement_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "product-catalog-lead",
+    "name": "Product Catalog Lead",
+    "role": "pm",
+    "businessRole": "product_catalog_lead",
+    "reportsTo": "sales-director",
+    "paperclipReportsTo": "sales-director",
+    "children": []
+  },
+  {
+    "slug": "production-planning-and-technical-lead",
+    "name": "Production Planning & Technical Lead",
+    "role": "pm",
+    "businessRole": "production_planning_and_technical_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "quality-and-certification-lead",
+    "name": "Quality & Certification Lead",
+    "role": "qa",
+    "businessRole": "quality_and_certification_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "supplier-factory-liaison",
+    "name": "Supplier / Factory Liaison",
+    "role": "general",
+    "businessRole": "supplier_factory_liaison",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "tax-accounting-lead",
+    "name": "Tax / Accounting Lead",
+    "role": "cfo",
+    "businessRole": "tax_accounting_lead",
+    "reportsTo": "commercial-finance-lead",
+    "paperclipReportsTo": "commercial-finance-lead",
+    "children": []
+  },
+  {
+    "slug": "tech-pack-product-development-lead",
+    "name": "Tech Pack / Product Development Lead",
+    "role": "pm",
+    "businessRole": "tech_pack_product_development_lead",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "template-production-designer",
+    "name": "Template / Production Designer",
+    "role": "designer",
+    "businessRole": "template_production_designer",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "knitwear-technical-specialist",
+    "name": "Knitwear Technical Specialist",
+    "role": "researcher",
+    "businessRole": "knitwear_technical_specialist",
+    "reportsTo": "creative-direction-approval",
+    "paperclipReportsTo": "creative-direction-approval",
+    "children": []
+  },
+  {
+    "slug": "warehouse-lead",
+    "name": "Warehouse Lead",
+    "role": "general",
+    "businessRole": "warehouse_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "billing-subscription-operations-lead",
+    "name": "Billing / Subscription Operations Lead",
+    "role": "cfo",
+    "businessRole": "billing_subscription_operations_lead",
+    "reportsTo": "commercial-finance-lead",
+    "paperclipReportsTo": "commercial-finance-lead",
+    "children": []
+  },
+  {
+    "slug": "customs-compliance-lead",
+    "name": "Customs / Compliance Lead",
+    "role": "general",
+    "businessRole": "customs_compliance_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  },
+  {
+    "slug": "factory-sourcing-lead",
+    "name": "Factory Sourcing Lead",
+    "role": "researcher",
+    "businessRole": "factory_sourcing_lead",
+    "reportsTo": "industrial-director",
+    "paperclipReportsTo": "industrial-director",
+    "children": []
+  }
+]

@@ -1,0 +1,77 @@
+{
+  "name": "Customer Service Lead",
+  "slug": "customer-service-lead",
+  "role": "general",
+  "title": "Customer Service Lead",
+  "reportsTo": "sales-director",
+  "paperclipReportsTo": "sales-director",
+  "capabilities": [
+    "Own customer-service macros, refund/return scripts, escalation logic, FAQ, and response quality",
+    "Escalate legal, payment, safety, or reputational issues"
+  ],
+  "budgetMonthlyCents": 1500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/customer-service-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/customer-service-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/customer-service-lead/instructions.md",
+    "model": "claude-haiku-4-5-20251001",
+    "effort": "low",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Customer Service Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 25,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 600,
+    "graceSec": 30
+  },
+  "businessRole": "customer_service_lead"
+}

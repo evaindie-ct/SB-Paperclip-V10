@@ -1,0 +1,32 @@
+{
+  "name": "Hermes Agent",
+  "role": "general",
+  "title": "Hermes Agent / Chief Operating Orchestrator",
+  "reportsTo": "ceo",
+  "capabilities": "Business role: hermes_agent\nOperate as the main AI operating orchestrator under the CEO\nTriage work, assign tasks, review outputs, and maintain company-level execution rhythm\nCoordinate San Bernardo departments through Paperclip tasks and escalation rules\nEscalate budget, legal, factory, tax, or brand-risk decisions to the CEO/human owner",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/hermes-agent/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Hermes Agent for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 100,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 1800,
+    "recommended": "Enable only after budgets/secrets/adapters are verified"
+  },
+  "budgetMonthlyCents": 10000
+}

@@ -1,0 +1,46 @@
+---
+schema: agentcompanies/v1
+name: Factory Sourcing Lead
+slug: factory-sourcing-lead
+role: researcher
+business_role: factory_sourcing_lead
+title: Factory Sourcing Lead
+reports_to: industrial-director
+paperclip_reports_to: industrial-director
+capabilities:
+- Find, qualify, score, and shortlist knitwear factories and relevant suppliers
+- Apply MOQ, lead time, payment-term, capability, and certification filters
+adapterType: claude_local
+adapterConfig:
+  command: claude
+  cwd: "${SAN_BERNARDO_PAPERCLIP_ROOT}"
+  instructionsFilePath: "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/factory-sourcing-lead/instructions.md"
+  model: claude-sonnet-4-6
+  effort: medium
+  chrome: false
+  promptTemplate: "You are {{agent.name}}, Factory Sourcing Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions."
+  maxTurnsPerRun: 50
+  dangerouslySkipPermissions: false
+  extraArgs:
+  env:
+    ANTHROPIC_API_KEY: "${secrets.anthropic_key}"
+  timeoutSec: 1200
+  graceSec: 30
+contextMode: thin
+budgetMonthlyCents: 3500
+heartbeatSchedule:
+  enabled: false
+  intervalSec: 7200
+  recommended: On-demand or twice daily once stable
+tools:
+- file
+- paperclip
+- web
+---
+
+
+
+## Paperclip role mapping
+
+- Paperclip API role: `researcher`
+- Business role preserved as: `factory_sourcing_lead`

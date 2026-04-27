@@ -1,0 +1,15 @@
+{
+  "name": "san-bernardo-paperclip-global-paperclip-runtime-v10",
+  "version": "10.0.0",
+  "private": true,
+  "description": "San Bernardo Paperclip runtime package for a knitwear fashion brand business with CEO root, Paperclip-safe role enum mapping, dynamic company creation, and forced org hierarchy repair.",
+  "type": "module",
+  "scripts": {
+    "validate": "node scripts/validate-runtime-package.mjs",
+    "materialize": "node scripts/materialize-runtime-config.mjs",
+    "bootstrap": "bash scripts/curl-bootstrap-company-agents-org.sh",
+    "repair:org": "bash scripts/curl-repair-existing-company-org.sh",
+    "verify:org": "bash scripts/curl-verify-org-hierarchy.sh",
+    "list:companies": "bash scripts/curl-list-companies.sh"
+  }
+}

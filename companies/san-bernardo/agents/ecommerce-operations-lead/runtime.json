@@ -1,0 +1,79 @@
+{
+  "name": "Ecommerce Operations Lead",
+  "slug": "ecommerce-operations-lead",
+  "role": "pm",
+  "title": "Ecommerce Operations Lead",
+  "reportsTo": "sales-director",
+  "paperclipReportsTo": "sales-director",
+  "capabilities": [
+    "Own Shopify operations, orders, returns, fulfillment handoffs, product publishing workflows, and store-operating SOPs",
+    "Coordinate with warehouse, customer service, catalog, and finance"
+  ],
+  "budgetMonthlyCents": 3500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "browser",
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": true,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/ecommerce-operations-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/ecommerce-operations-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "codex_local",
+  "adapterConfig": {
+    "command": "codex",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/ecommerce-operations-lead/instructions.md",
+    "model": "gpt-5.5",
+    "modelReasoningEffort": "medium",
+    "search": true,
+    "promptTemplate": "You are {{agent.name}}, Ecommerce Operations Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "dangerouslyBypassApprovalsAndSandbox": false,
+    "extraArgs": [],
+    "env": {
+      "OPENAI_API_KEY": "${secrets.openai_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "ecommerce_operations_lead"
+}

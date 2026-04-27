@@ -1,0 +1,78 @@
+{
+  "name": "Procurement Lead",
+  "slug": "procurement-lead",
+  "role": "general",
+  "title": "Procurement Lead",
+  "reportsTo": "industrial-director",
+  "paperclipReportsTo": "industrial-director",
+  "capabilities": [
+    "Own purchasing workflows, supplier quotes, purchase order checklists, packaging/material procurement, and cost/lead-time comparison"
+  ],
+  "budgetMonthlyCents": 3500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/procurement-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/procurement-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/procurement-lead/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Procurement Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "procurement_lead"
+}

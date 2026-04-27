@@ -1,0 +1,77 @@
+{
+  "name": "Warehouse Lead",
+  "slug": "warehouse-lead",
+  "role": "general",
+  "title": "Warehouse Lead",
+  "reportsTo": "industrial-director",
+  "paperclipReportsTo": "industrial-director",
+  "capabilities": [
+    "Own storage, inbound/outbound inventory process, pick/pack handoffs, low-volume fulfillment routines, and warehouse checklists"
+  ],
+  "budgetMonthlyCents": 1500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/warehouse-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/warehouse-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/warehouse-lead/instructions.md",
+    "model": "claude-haiku-4-5-20251001",
+    "effort": "low",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Warehouse Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 25,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 600,
+    "graceSec": 30
+  },
+  "businessRole": "warehouse_lead"
+}

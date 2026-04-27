@@ -1,0 +1,68 @@
+{
+  "name": "Human Owner",
+  "slug": "human-owner",
+  "role": "general",
+  "title": "Human Owner / Board Governance",
+  "reportsTo": null,
+  "paperclipReportsTo": null,
+  "capabilities": [
+    "Act as external board owner and final human approver",
+    "Approve or reject governance-critical actions",
+    "Control budgets, secrets, irreversible changes, and legal/financial commitments",
+    "Review escalation reports from Hermes Agent"
+  ],
+  "budgetMonthlyCents": 0,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": null,
+    "recommended": "Manual board review only"
+  },
+  "tools": [
+    "approvals",
+    "budget-control",
+    "governance"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": false,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/human-owner/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/human-owner/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "external_human",
+  "adapterConfig": {
+    "enabled": false,
+    "mode": "external_human_approver",
+    "note": "This is the human owner/board node, not an autonomous Paperclip agent. Do not seed as an executable agent unless your Paperclip instance supports human pseudo-agents."
+  },
+  "businessRole": "human_owner"
+}

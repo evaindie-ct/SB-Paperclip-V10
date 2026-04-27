@@ -1,0 +1,32 @@
+{
+  "name": "B2B Sales Lead",
+  "role": "cmo",
+  "title": "B2B Sales Lead",
+  "reportsTo": "sales-director",
+  "capabilities": "Business role: b2b_sales_lead\nOwn wholesale/B2B targets, retailer outreach, buyer research, trade-show prep, and account qualification\nCoordinate with market research and finance before commercial commitments",
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/b2b-sales-lead/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": true,
+    "promptTemplate": "You are {{agent.name}}, B2B Sales Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "budgetMonthlyCents": 3500
+}

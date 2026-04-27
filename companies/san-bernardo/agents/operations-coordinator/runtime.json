@@ -1,0 +1,85 @@
+{
+  "name": "Operations Coordinator",
+  "slug": "operations-coordinator",
+  "role": "pm",
+  "title": "Operations Coordinator",
+  "reportsTo": "hermes-agent",
+  "paperclipReportsTo": "hermes-agent",
+  "capabilities": [
+    "Run the operating cadence, intake queue, cross-department task routing, and weekly review",
+    "Convert broad objectives into owners, deadlines, outputs, and escalation points",
+    "Prevent duplicate work and uncontrolled agent drift"
+  ],
+  "budgetMonthlyCents": 5000,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 3600,
+    "recommended": "Hourly or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ]
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/operations-coordinator/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/operations-coordinator/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/operations-coordinator/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Operations Coordinator for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "operations_coordinator"
+}

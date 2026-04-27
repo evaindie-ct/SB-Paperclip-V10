@@ -1,0 +1,77 @@
+{
+  "name": "Tax / Accounting Lead",
+  "slug": "tax-accounting-lead",
+  "role": "cfo",
+  "title": "Tax / Accounting Lead",
+  "reportsTo": "commercial-finance-lead",
+  "paperclipReportsTo": "commercial-finance-lead",
+  "capabilities": [
+    "Own Spanish SL tax calendar, IRPF withholding-related models, AEAT forms, EU OSS VAT, UK VAT monitoring, Modelo 303/390/349/111/190/200/202 agenda, bookkeeping handoff checklists, and filing deadline reminders"
+  ],
+  "budgetMonthlyCents": 6000,
+  "contextMode": "fat",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 86400,
+    "recommended": "Daily/weekly monitoring depending on active deadlines"
+  },
+  "tools": [
+    "file",
+    "paperclip",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": true,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/tax-accounting-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/tax-accounting-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/tax-accounting-lead/instructions.md",
+    "model": "claude-opus-4-7",
+    "effort": "high",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Tax / Accounting Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 80,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1800,
+    "graceSec": 30
+  },
+  "businessRole": "tax_accounting_lead"
+}

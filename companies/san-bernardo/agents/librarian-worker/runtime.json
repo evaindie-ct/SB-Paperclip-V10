@@ -1,0 +1,81 @@
+{
+  "name": "Librarian Worker",
+  "slug": "librarian-worker",
+  "role": "researcher",
+  "title": "Librarian Worker",
+  "reportsTo": "hermes-agent",
+  "paperclipReportsTo": "hermes-agent",
+  "capabilities": [
+    "Build and maintain a living source library for books, links, documents, forms, instructions, skills, repositories, tools, scores, papers, file paths, and lookup maps",
+    "Index all source packs, operating cards, prompts, queues, regulatory pages, and supplier materials",
+    "Prevent knowledge loss by linking every worker to sources and file paths"
+  ],
+  "budgetMonthlyCents": 3500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip",
+    "repository-index",
+    "source-library",
+    "web"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ]
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/librarian-worker/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/librarian-worker/AGENTS.md",
+    "sourcePacks": []
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/librarian-worker/instructions.md",
+    "model": "claude-sonnet-4-6",
+    "effort": "medium",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Librarian Worker for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 50,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "businessRole": "librarian_worker"
+}

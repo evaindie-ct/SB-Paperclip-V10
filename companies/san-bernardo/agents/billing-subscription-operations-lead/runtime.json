@@ -1,0 +1,77 @@
+{
+  "name": "Billing / Subscription Operations Lead",
+  "slug": "billing-subscription-operations-lead",
+  "role": "cfo",
+  "title": "Billing / Subscription Operations Lead",
+  "reportsTo": "commercial-finance-lead",
+  "paperclipReportsTo": "commercial-finance-lead",
+  "capabilities": [
+    "Own billing operations, recurring/vendor subscriptions, invoice checks, SaaS spend, and subscription cancellation/renewal tracking"
+  ],
+  "budgetMonthlyCents": 1500,
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "tools": [
+    "file",
+    "paperclip"
+  ],
+  "permissions": {
+    "filesystem": {
+      "read": [
+        "companies/san-bernardo/**",
+        "original/**",
+        "docs/**"
+      ],
+      "write": []
+    },
+    "browser": false,
+    "network": false,
+    "shell": false,
+    "git": false,
+    "paperclipWrite": true,
+    "requiresHumanApprovalFor": [
+      "contracts",
+      "payments",
+      "factory commitments",
+      "tax/legal filings",
+      "public brand statements",
+      "production orders",
+      "customer refunds outside policy",
+      "new paid subscriptions"
+    ]
+  },
+  "source": {
+    "originalManual": "original/san-bernardo-paperclip-final-clean-operating-manual-with-diagram-and-librarian.md",
+    "instructionFile": "companies/san-bernardo/agents/billing-subscription-operations-lead/instructions.md",
+    "agentFile": "companies/san-bernardo/agents/billing-subscription-operations-lead/AGENTS.md",
+    "sourcePacks": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ]
+  },
+  "adapterType": "claude_local",
+  "adapterConfig": {
+    "command": "claude",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/billing-subscription-operations-lead/instructions.md",
+    "model": "claude-haiku-4-5-20251001",
+    "effort": "low",
+    "chrome": false,
+    "promptTemplate": "You are {{agent.name}}, Billing / Subscription Operations Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "maxTurnsPerRun": 25,
+    "dangerouslySkipPermissions": false,
+    "extraArgs": [],
+    "env": {
+      "ANTHROPIC_API_KEY": "${secrets.anthropic_key}"
+    },
+    "timeoutSec": 600,
+    "graceSec": 30
+  },
+  "businessRole": "billing_subscription_operations_lead"
+}

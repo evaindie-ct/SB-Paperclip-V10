@@ -1,0 +1,31 @@
+{
+  "name": "Ecommerce Operations Lead",
+  "role": "pm",
+  "title": "Ecommerce Operations Lead",
+  "reportsTo": "sales-director",
+  "capabilities": "Business role: ecommerce_operations_lead\nOwn Shopify operations, orders, returns, fulfillment handoffs, product publishing workflows, and store-operating SOPs\nCoordinate with warehouse, customer service, catalog, and finance",
+  "adapterType": "codex_local",
+  "adapterConfig": {
+    "command": "codex",
+    "cwd": "${SAN_BERNARDO_PAPERCLIP_ROOT}",
+    "instructionsFilePath": "${SAN_BERNARDO_PAPERCLIP_ROOT}/companies/san-bernardo/agents/ecommerce-operations-lead/instructions.md",
+    "model": "gpt-5.5",
+    "modelReasoningEffort": "medium",
+    "search": true,
+    "promptTemplate": "You are {{agent.name}}, Ecommerce Operations Lead for San Bernardo. Review assigned Paperclip tasks, use your instruction file, execute only within your scope, cite sources when researching, and report concrete next actions.",
+    "dangerouslyBypassApprovalsAndSandbox": false,
+    "extraArgs": [],
+    "env": {
+      "OPENAI_API_KEY": "${secrets.openai_key}"
+    },
+    "timeoutSec": 1200,
+    "graceSec": 30
+  },
+  "contextMode": "thin",
+  "heartbeatSchedule": {
+    "enabled": false,
+    "intervalSec": 7200,
+    "recommended": "On-demand or twice daily once stable"
+  },
+  "budgetMonthlyCents": 3500
+}

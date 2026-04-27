@@ -1,0 +1,578 @@
+[
+  {
+    "name": "Human Owner",
+    "slug": "human-owner",
+    "reports_to": "",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/human-owner/AGENTS.md"
+  },
+  {
+    "name": "Hermes Agent",
+    "slug": "hermes-agent",
+    "reports_to": "human-owner",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/hermes-agent/AGENTS.md"
+  },
+  {
+    "name": "Creative Direction Approval",
+    "slug": "creative-direction-approval",
+    "reports_to": "hermes-agent",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/creative-direction-approval/AGENTS.md"
+  },
+  {
+    "name": "Design Lead",
+    "slug": "design-lead",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "E: Sales / market / wholesale / commercial research",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/design-lead/AGENTS.md"
+  },
+  {
+    "name": "Marketing Lead",
+    "slug": "marketing-lead",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/marketing-lead/AGENTS.md"
+  },
+  {
+    "name": "Knitwear Technical Specialist",
+    "slug": "knitwear-technical-specialist",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production"
+    ],
+    "path": "companies/san-bernardo/agents/knitwear-technical-specialist/AGENTS.md"
+  },
+  {
+    "name": "Tech Pack / Product Development Lead",
+    "slug": "tech-pack-product-development-lead",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/tech-pack-product-development-lead/AGENTS.md"
+  },
+  {
+    "name": "Template / Production Designer",
+    "slug": "template-production-designer",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/template-production-designer/AGENTS.md"
+  },
+  {
+    "name": "Packaging Designer",
+    "slug": "packaging-designer",
+    "reports_to": "creative-direction-approval",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/packaging-designer/AGENTS.md"
+  },
+  {
+    "name": "Librarian Worker",
+    "slug": "librarian-worker",
+    "reports_to": "hermes-agent",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": false,
+    "has_current_card": true,
+    "has_full_card": false,
+    "source_packs": [],
+    "path": "companies/san-bernardo/agents/librarian-worker/AGENTS.md"
+  },
+  {
+    "name": "Operations Coordinator",
+    "slug": "operations-coordinator",
+    "reports_to": "hermes-agent",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/operations-coordinator/AGENTS.md"
+  },
+  {
+    "name": "Sales Director",
+    "slug": "sales-director",
+    "reports_to": "operations-coordinator",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": true,
+    "has_full_card": false,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/sales-director/AGENTS.md"
+  },
+  {
+    "name": "Sales Lead",
+    "slug": "sales-lead",
+    "reports_to": "sales-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/sales-lead/AGENTS.md"
+  },
+  {
+    "name": "B2B Sales Lead",
+    "slug": "b2b-sales-lead",
+    "reports_to": "sales-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": true,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/b2b-sales-lead/AGENTS.md"
+  },
+  {
+    "name": "Market Research / Directory Research Lead",
+    "slug": "market-research-directory-research-lead",
+    "reports_to": "sales-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research"
+    ],
+    "path": "companies/san-bernardo/agents/market-research-directory-research-lead/AGENTS.md"
+  },
+  {
+    "name": "Web Design / Ecommerce Lead",
+    "slug": "web-design-ecommerce-lead",
+    "reports_to": "sales-director",
+    "model": "gpt-5.5",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/web-design-ecommerce-lead/AGENTS.md"
+  },
+  {
+    "name": "Ecommerce Operations Lead",
+    "slug": "ecommerce-operations-lead",
+    "reports_to": "sales-director",
+    "model": "gpt-5.5",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/ecommerce-operations-lead/AGENTS.md"
+  },
+  {
+    "name": "Product Catalog Lead",
+    "slug": "product-catalog-lead",
+    "reports_to": "sales-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/product-catalog-lead/AGENTS.md"
+  },
+  {
+    "name": "Customer Service Lead",
+    "slug": "customer-service-lead",
+    "reports_to": "sales-director",
+    "model": "claude-haiku-4-5-20251001",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/customer-service-lead/AGENTS.md"
+  },
+  {
+    "name": "Customer Success / Implementation Lead",
+    "slug": "customer-success-implementation-lead",
+    "reports_to": "sales-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/customer-success-implementation-lead/AGENTS.md"
+  },
+  {
+    "name": "Industrial Director",
+    "slug": "industrial-director",
+    "reports_to": "operations-coordinator",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": true,
+    "has_full_card": false,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/industrial-director/AGENTS.md"
+  },
+  {
+    "name": "Supplier / Factory Liaison",
+    "slug": "supplier-factory-liaison",
+    "reports_to": "industrial-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/supplier-factory-liaison/AGENTS.md"
+  },
+  {
+    "name": "Factory Sourcing Lead",
+    "slug": "factory-sourcing-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "E: Sales / market / wholesale / commercial research"
+    ],
+    "path": "companies/san-bernardo/agents/factory-sourcing-lead/AGENTS.md"
+  },
+  {
+    "name": "Production Planning & Technical Lead",
+    "slug": "production-planning-and-technical-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/production-planning-and-technical-lead/AGENTS.md"
+  },
+  {
+    "name": "Quality & Certification Lead",
+    "slug": "quality-and-certification-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "B: Textile / knitwear / product development",
+      "C: Industrial / suppliers / factory / customs / production",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/quality-and-certification-lead/AGENTS.md"
+  },
+  {
+    "name": "Customs / Compliance Lead",
+    "slug": "customs-compliance-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/customs-compliance-lead/AGENTS.md"
+  },
+  {
+    "name": "Warehouse Lead",
+    "slug": "warehouse-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-haiku-4-5-20251001",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/warehouse-lead/AGENTS.md"
+  },
+  {
+    "name": "Procurement Lead",
+    "slug": "procurement-lead",
+    "reports_to": "industrial-director",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "F: Finance / tax / inventory / billing",
+      "H: Packaging / EPR / environmental packaging compliance"
+    ],
+    "path": "companies/san-bernardo/agents/procurement-lead/AGENTS.md"
+  },
+  {
+    "name": "Commercial Finance Lead",
+    "slug": "commercial-finance-lead",
+    "reports_to": "operations-coordinator",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/commercial-finance-lead/AGENTS.md"
+  },
+  {
+    "name": "Finance / Collections Lead",
+    "slug": "finance-collections-lead",
+    "reports_to": "commercial-finance-lead",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/finance-collections-lead/AGENTS.md"
+  },
+  {
+    "name": "Tax / Accounting Lead",
+    "slug": "tax-accounting-lead",
+    "reports_to": "commercial-finance-lead",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/tax-accounting-lead/AGENTS.md"
+  },
+  {
+    "name": "Inventory Planner",
+    "slug": "inventory-planner",
+    "reports_to": "commercial-finance-lead",
+    "model": "claude-sonnet-4-6",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "C: Industrial / suppliers / factory / customs / production",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/inventory-planner/AGENTS.md"
+  },
+  {
+    "name": "Billing / Subscription Operations Lead",
+    "slug": "billing-subscription-operations-lead",
+    "reports_to": "commercial-finance-lead",
+    "model": "claude-haiku-4-5-20251001",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/billing-subscription-operations-lead/AGENTS.md"
+  },
+  {
+    "name": "Data / Reporting Operator",
+    "slug": "data-reporting-operator",
+    "reports_to": "operations-coordinator",
+    "model": "claude-haiku-4-5-20251001",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "E: Sales / market / wholesale / commercial research",
+      "F: Finance / tax / inventory / billing"
+    ],
+    "path": "companies/san-bernardo/agents/data-reporting-operator/AGENTS.md"
+  },
+  {
+    "name": "Automation Operator",
+    "slug": "automation-operator",
+    "reports_to": "operations-coordinator",
+    "model": "gpt-5.5",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "D: Ecommerce / catalog / customer service / customer data",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/automation-operator/AGENTS.md"
+  },
+  {
+    "name": "Legal / IP / Corporate Affairs Lead",
+    "slug": "legal-ip-corporate-affairs-lead",
+    "reports_to": "operations-coordinator",
+    "model": "claude-opus-4-7",
+    "has_instruction_summary": true,
+    "has_current_card": false,
+    "has_full_card": true,
+    "source_packs": [
+      "A: Paperclip / agent operations / model configuration",
+      "F: Finance / tax / inventory / billing",
+      "G: Legal / IP / privacy / corporate governance"
+    ],
+    "path": "companies/san-bernardo/agents/legal-ip-corporate-affairs-lead/AGENTS.md"
+  }
+]
