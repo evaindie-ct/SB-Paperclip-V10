@@ -1,157 +1,240 @@
+# San Bernardo Launch Critical Path v1
+Brand: San Bernardo  |  Entity: FITZ ROY PATAGONIA SL  |  Fulfillment: Madrid, Spain
+Market: Europe + UK (priority: Nordic, Germany)
+Product: AW sweaters + scarves (merino/alpaca, XS-XL, EUR 280-520 incl. VAT)
+MOQ: 150/model  |  Production start: 20 May  |  Presale: 20 Jul  |  Stock-ready Madrid: 20 Aug
+
+---
+
+## PHASE 0 -- FOUNDATION (already done)
+- [x] Brand identity, legal entity, bank account established
+- [x] Design direction: mood boards, sketches, colour palette, silhouette direction
+- [x] Factory shortlist: 12 factories researched and qualified
+- [x] Shopify: ~60% setup complete
+- [x] B2B retailer prospect list: initial pass done but incomplete
+- [x] Paperclip worker hierarchy: 37 agents defined and configured (v10)
+- [x] EU VAT/tax/customs research: initial findings documented
+- [x] ERP/WMS/SCM research: initial findings documented
+
+---
+
 ## PHASE 1 -- TECH PACKS, YARN SOURCING & SAMPLE REQUEST (NOW)
-**Deadline: everything locked and production-ready within 3 weeks from today (29 Apr -> 20 May)**
-**TIMELINE RESET: Original 8-week timeline compressed to 3 weeks. All phases run in aggressive parallel.**
 
-CONSTRAINT: At this speed, some steps must be front-loaded or skipped:
-- Yarn selection: use yarns that factories ALREADY stock. No custom spinner orders. No waiting for cone shipments. Factory recommends from their existing yarn library, you approve or reject based on swatch photos and samples they can send express.
-- Proto samples: factories can knit proto in 5-7 days IF they have the yarn on hand.
-- SMS and PP: skip to one consolidated "production approval sample" (PAS) instead of SMS -> wash tests -> PP separately.
-- Lab testing: do in parallel with production, not before. Accept risk of post-production adjustments.
-- Design: you already have mood boards and drafts. This week is about translating to factory-ready specs, not new creative work.
+NOTE on knitwear sampling reality:
+- Tech packs are NEVER final on first write. They set the "goal post" -- the factory helps refine tension, gauge, and fit collaboratively during sampling.
+- Yarn selection is NOT a desk decision. It requires choosing a specific yarn line from a specific spinner, ordering cones, knitting gauge swatches, testing for hand feel, pilling, shrinkage, wash behavior. Many yarns fail at this stage (too itchy, too loose, pills after wash, wrong drape).
+- Jacquard/colourwork requires pixel-accurate BMP files (not vector art) with reduced colour palette suitable for the machine's yarn carriers.
+- Sampling is iterative: Proto (first knit) -> fit review -> revisions -> SMS (size set) -> wash tests -> PP (pre-production approval). Each round takes 5-14 working days.
+- From design freeze to bulk production ready: minimum ~8 weeks with good factory cooperation, assuming no major yarn or fit issues.
 
-### 1.1 Design freeze (DAY 1-3 -- IMMEDIATE)
+### 1.1 Design review & finalisation
 Leads: Design Lead, Knitwear Technical Specialist, Template/Production Designer
 Dependencies: mood boards, design drafts, colour palette, silhouette direction (all exist)
 
 Tasks:
-- [ ] Review all silhouette sketches against knit feasibility with factories (send sketches, ask what works)
-- [ ] Finalise 1-page per model: stitch type, gauge direction (3GG/7GG/12GG), fully-fashioned or cut-and-sew
-- [ ] For jacquard: create pixel-accurate BMP files with reduced colour palette
-- [ ] For cable/stitch structures: provide reference photo or stitch map
-- [ ] Create technical flat sketches: front + back, clean line drawings with callouts
-- [ ] Annotate seam construction expectations
-- [ ] Human Owner signs off design direction by end of Day 3
+- [ ] Review all silhouette sketches against yarn/stitch feasibility (what works on a knitting machine vs what was drawn)
+- [ ] Finalise stitch types per model: e.g. jersey, 1x1 rib, 2x2 rib, cable, links-links, jersey jacquard
+- [ ] Finalise gauge direction per model (3GG chunky, 7GG mid, 12GG fine, 14GG ultra-fine) based on desired weight and drape
+- [ ] For any jacquard/colourwork/intarsia designs: create pixel-accurate BMP files with reduced colour palette (max colours = number of yarn carriers the machine can handle per row)
+- [ ] For cable/stitch structure designs: draw stitch map or reference photo of the intended structure
+- [ ] Decide if fully-fashioned (panels knit to shape) or cut-and-sew (lower cost, bulkier seams)
+- [ ] Create technical flat sketches: front, back, side views, clean black-and-white line drawings with callouts for every detail (neckline, cuff, hem, pocket, button placket)
+- [ ] Annotate seam construction expectations: linked seams, overlock, or coverstitch
+- [ ] Human Owner reviews and signs off on final design direction for each model
 
-### 1.2 Yarn selection (DAYS 1-5 -- PARALLEL, CRITICAL)
-Leads: Factory Sourcing Lead, Knitwear Technical Specialist
+### 1.2 Yarn sourcing & selection (CRITICAL PATH)
+Leads: Design Lead, Knitwear Technical Specialist, Factory Sourcing Lead
 Dependencies: 1.1 stitch and gauge direction
 
-NOTE: At this speed, you do NOT research spinners and order cones. Instead:
-- Send each factory your gauge direction and ask for their recommended yarns from their stock
-- Factories send you photos of knitted swatches with their stock yarns in your target gauge
-- You pick from what's available. Compromise on ideal yarn to get speed.
-- If a factory has a merino that knits to 12GG and feels good enough, that's the yarn.
+NOTE: This is the most iterative and unpredictable part. Yarn properties determine the entire garment outcome. Multiple rounds of sampling may be needed.
 
 Tasks:
-- [ ] Immediately ask each shortlisted factory: what merino/alpaca yarns do you stock that knit to our target gauges?
-- [ ] Request: yarn composition, ply, weight, price per kg, colour availability
-- [ ] Ask for knitted swatch photos (or express mail swatches if possible)
-- [ ] Evaluate: hand feel from description/swatch, shrinkage data if factory has it
-- [ ] If factory suggests substitute: evaluate speed trade-off vs ideal
-- [ ] Select yarn per model per factory by Day 5
-- [ ] Record selected yarn: factory stock code, composition, ply, weight, price per kg
-- [ ] Human Owner approves yarn selection
+- [ ] Research yarn spinners that supply merino and/or alpaca in the target gauge range
+- [ ] Identify specific yarn lines from spinners that match: fibre type (merino, alpaca, blend), ply (single, 2-ply, 3-ply), weight (Nm or count), hand feel direction
+- [ ] Request yarn cards and/or cone samples from 2-3 spinners per yarn type needed
+- [ ] Share yarn options with shortlisted factories and get their input (they know which yarns run well on their machines)
+- [ ] For each candidate yarn: knit gauge swatches at the factory (or have them send knitted swatches) 
+- [ ] Evaluate swatches for: hand feel (softness, itchiness), drape, stitch definition, weight per m2
+- [ ] Wash test swatches: measure pre-wash vs post-wash dimensions. Check shrinkage %, distortion, and any pilling/balling after washing
+- [ ] Check colour fastness: does the dye bleed or fade?
+- [ ] For blended yarns: verify the blend ratio behaves as expected (some blends separate or felt differently)
+- [ ] If yarn fails any test: try alternative yarn or negotiate with spinner for custom modification
+- [ ] Once suitable yarn found per model: confirm yarn availability and lead time from spinner
+- [ ] Confirm MOQ from spinner (yarn cones usually have their own minimums independent of garment MOQ)
+- [ ] Record approved yarn: spinner name, yarn name, product code, composition, ply, weight, gauge it knits to, colour reference, lead time, price per kg
+- [ ] Human Owner approves yarn selection per model
 
-### 1.3 Measure spec & grading (DAYS 1-3 -- COMPRESSED)
-Leads: Tech Pack / Product Development Lead
-
-Tasks:
-- [ ] Set base size (M) measurements per model: chest, body length, shoulder, sleeve length, sleeve opening, neck, armhole
-- [ ] Set tolerance (+/- 1cm knits)
-- [ ] Provide grading direction per size (factory will do exact math)
-- [ ] Create 1-page measurement table per model
-
-### 1.4 Bill of materials (DAYS 2-4 -- COMPRESSED)
-Leads: Tech Pack / Product Development Lead
+### 1.3 Measure spec & grading (runs parallel with 1.2)
+Leads: Tech Pack / Product Development Lead, Knitwear Technical Specialist
+Dependencies: 1.1 finalised silhouette designs (for base measurements)
 
 Tasks:
-- [ ] Specify selected yarn per model
-- [ ] Specify care label content (standard EU knitwear wording)
-- [ ] Specify brand label placement
-- [ ] Specify packaging (polybag, barcode)
-- [ ] Create 1-page BOM per model
+- [ ] Define points of measurement (POMs) with diagram showing exactly where each measurement is taken
+- [ ] Set base size (usually M) measurements for each model: full chest, waist, hip (if applicable), body length (HPS to hem), shoulder width, sleeve length (shoulder to cuff), sleeve opening, neck opening, armhole depth, cross-back width
+- [ ] Set tolerance per measurement (typically +/- 1cm for knits, but some measurements may need tighter)
+- [ ] Define grading rules: how each measurement changes per size (XS, S, M, L, XL)
+- [ ] Create graded spec table with all sizes in one view
+- [ ] Note: factories typically handle the actual grading math -- you provide base size + grading rules, they produce the pattern
 
-### 1.5 Compile tech packs (DAYS 3-5)
-Leads: Tech Pack / Product Development Lead
-Dependencies: 1.1 flats, 1.2 yarn, 1.3 measurements, 1.4 BOM
+### 1.4 Bill of materials & trims (runs parallel)
+Leads: Tech Pack / Product Development Lead, Packaging Designer (for trims)
+Dependencies: 1.2 yarn selected, brand label direction (done)
 
 Tasks:
-- [ ] Compile each model as a single document: header, flats, BOM, yarn spec, knit spec, measurement table with POM diagram, construction notes, label diagram, packaging, colourway callouts
-- [ ] Save as PDF
-- [ ] Version v0.1 -- expect changes
+- [ ] Specify main yarn per model per colourway with exact spinner product code
+- [ ] Specify contrast yarns if applicable (stripes, jacquard, trims)
+- [ ] Specify sewing thread: type and colour
+- [ ] Specify buttons, zippers, or other fasteners: type, size, colour, material, source
+- [ ] Specify care labels: content, size, placement, text (fibre composition, washing instructions, country of origin)
+- [ ] Specify brand labels: woven or printed, size, placement
+- [ ] Specify hang tags: design, size, attachment method
+- [ ] Specify packaging: polybag size, barcode label placement
+- [ ] Create BOM table: item description, supplier, colour, quantity per garment, lead time, cost per unit
 
-### 1.6 Tech pack review with factory (DAYS 5-7)
+### 1.5 Compile tech packs
+Leads: Tech Pack / Product Development Lead, Template/Production Designer
+Dependencies: 1.1 technical flats, 1.2 yarn specs, 1.3 measurement specs, 1.4 BOM
+
+Tasks:
+- [ ] Compile each model's tech pack as a single document containing:
+  - [ ] Header: style name/number, season, date, version number, brand name, contact info
+  - [ ] Technical flat sketches (front, back, side/detail views) with callouts
+  - [ ] BOM table with all materials and trims
+  - [ ] Yarn spec: spinner, product code, composition, ply, weight, colour reference
+  - [ ] Knit spec: gauge (GG), stitch structures per panel, machine type suggestion if known
+  - [ ] Graded measurement table with POM diagram and tolerances
+  - [ ] Construction notes: seam types, linking instructions, finishing (wash, steam, block recipe)
+  - [ ] Jacquard BMP files or stitch maps if applicable (attached as separate files, not embedded in PDF)
+  - [ ] Label placement diagram
+  - [ ] Packaging instructions
+  - [ ] Blank section for sample comments (to track factory feedback each round)
+  - [ ] Colourway callouts per model
+- [ ] Save as PDF + editable source files
+- [ ] Tech packs are version-controlled -- first version is v0.1 (draft), not final. They WILL change after proto feedback.
+
+### 1.6 Tech pack review with factory (BEFORE quoting)
 Lead: Factory Sourcing Lead
 Dependencies: 1.5 tech packs compiled
 
 Tasks:
-- [ ] Send tech pack PDFs to all shortlisted factories via email/WeChat/Alibaba
-- [ ] Request: feasibility review. Is anything unknittable? Gauge wrong? Missing detail?
-- [ ] Ask them to respond within 48 hours
-- [ ] Collect feedback, revise to v0.2
+- [ ] Send draft tech packs to each shortlisted factory for technical feasibility review (not quoting yet)
+- [ ] Factories will flag: unknittable stitch patterns, unrealistic gauge for chosen yarn, measurement conflicts, missing details
+- [ ] Collect feedback, revise tech packs to v0.2
+- [ ] Some factories may ask to substitute the yarn with one they already stock and know -- evaluate their suggestion
+- [ ] This step saves massive time vs getting quotes on unworkable tech packs
 
-### 1.7 Request quotes (DAYS 5-7 -- overlap with 1.6)
+### 1.7 Send tech packs for quoting
 Lead: Factory Sourcing Lead
-Dependencies: 1.5 tech packs (can send v0.1 for preliminary quote while review runs)
+Dependencies: 1.6 tech packs reviewed and feasible
 
 Tasks:
-- [ ] Include in the same message to factories: please quote unit price, sample cost, sample lead time, production lead time, MOQ, payment terms, incoterms
-- [ ] Set deadline: 5 calendar days
-- [ ] Follow up Day 7 on non-responders
+- [ ] Send revised tech packs to all shortlisted factories
+- [ ] For each model: request unit price (per piece, by quantity tier), sample cost (proto + SMS), sample lead time, production lead time, MOQ per colourway, payment terms, incoterms
+- [ ] Set 5-7 working day deadline for quotes
+- [ ] Follow up with non-responders
 
-### 1.8 Evaluate & select factories (DAYS 8-10)
-Leads: Factory Sourcing Lead, Commercial Finance Lead
-Dependencies: quotes received
-
-Tasks:
-- [ ] Compare: cost, lead time, MOQ, payment terms, communication quality
-- [ ] Check: does the factory have the selected yarn in stock right now?
-- [ ] Select 1-2 factories per model (can be same factory for all if they cover everything)
-- [ ] If a factory has yarn in stock and can start proto immediately, weight that heavily
-- [ ] Human Owner approves by Day 10
-
-### 1.9 Place proto order (DAY 10)
-Lead: Procurement Lead
-Dependencies: factory selected, yarn confirmed in stock at factory
+### 1.8 Evaluate factory quotes & select for sampling
+Leads: Factory Sourcing Lead, Commercial Finance Lead, Supplier/Factory Liaison
+Dependencies: 1.7 quotes received
 
 Tasks:
-- [ ] Issue proto PO: 1 garment per model, agreed colourway
-- [ ] Confirm: delivery in 7 calendar days max
-- [ ] Confirm: factory ships to Madrid with DHL/FedEx
-- [ ] Arrange payment (usually 50% with PO for samples)
+- [ ] Compare unit costs across factories per model
+- [ ] Evaluate sample costs and lead times
+- [ ] Evaluate payment terms and incoterms (FOB vs CIF vs EXW)
+- [ ] Evaluate factory communication quality during the tech pack review phase (responsiveness, how many issues they spotted, how they handled questions)
+- [ ] Factor in shipping, duties, and estimated landed cost per factory per unit
+- [ ] For each model: select 1-2 factories for sample production (can be same or different per model)
+- [ ] Document selection rationale
+- [ ] Human Owner approves factory selection and sample budget
 
-### 1.10 Receive proto samples (DAYS 17-19)
-Lead: Design Lead, Knitwear Technical Specialist
-Dependencies: proto shipped from factory
+### 1.9 Place sample orders -- PROTO
+Lead: Procurement Lead, Factory Sourcing Lead
+Dependencies: 1.8 factory selection approved, 1.2 yarn availability confirmed
+
+NOTE: The factory needs the exact yarn cones in hand to knit prototypes. If the yarn is from a third-party spinner that the factory doesn't stock, you must order and ship cones to the factory before proto can start. This adds 1-3 weeks.
 
 Tasks:
-- [ ] Receive proto(s) in Madrid
-- [ ] Quick fit check: does the silhouette match the sketch? Is the size roughly right?
-- [ ] Check: knit quality, colour, construction
-- [ ] If major issues: document, send feedback, request revision proto (adds 5-7 days)
-- [ ] If acceptable: proceed immediately to PAS
+- [ ] Order sample cones of approved yarn from spinner (if factory doesn't stock it) and ship to factory
+- [ ] Issue prototype sample purchase order per model:
+  - [ ] Confirm which yarn and colour(s) for proto (usually 1 proto in 1 colourway)
+  - [ ] Confirm expected proto delivery date (5-10 working days after yarn arrives at factory)
+  - [ ] Confirm what will be delivered: 1 finished garment + finishing recipe + pre/post-wash measurement sheet
+- [ ] Confirm delivery address (Madrid for you, or the factory's address if they ship samples directly)
+- [ ] Arrange payment per factory terms
 
-### 1.11 Production approval sample (PAS) (DAYS 17-23 -- issued same day as proto review)
+### 1.10 Receive & review prototype samples
+Leads: Design Lead, Knitwear Technical Specialist, Quality & Certification Lead
+Dependencies: 1.9 proto sample delivered
+
+Tasks:
+- [ ] Receive proto sample(s) from factory
+- [ ] Fit check on model or dress form
+- [ ] Measure against size spec table -- document variances
+- [ ] Evaluate knit quality: tension evenness, stitch definition, hand feel vs expectation
+- [ ] Evaluate colour accuracy vs colour reference
+- [ ] Evaluate construction quality: seams, linking, ribbing, finishing
+- [ ] If jacquard: evaluate pattern alignment, colour registration, float length on back
+- [ ] Wash test: measure pre- and post-wash dimensions, check for distortion, pilling, loose threads
+- [ ] Document sample review with photos and measurements
+- [ ] Compile feedback: approve as-is, approve with revisions (list specific changes needed), or reject (explain why, specify what needs to change)
+- [ ] If rejected: revise tech pack and/or yarn spec, request new proto round
+
+### 1.11 Second proto round (if needed)
 Lead: Factory Sourcing Lead
-Dependencies: 1.10 proto acceptable
+Dependencies: 1.10 proto failed or needed significant revisions
 
 Tasks:
-- [ ] Immediately authorise factory to produce 1 PAS per model with bulk yarn, final trims, labels
-- [ ] PAS = 1 garment in final specs. Skip full SMS size set.
-- [ ] Confirm delivery: 7 calendar days
-- [ ] On receipt: check all specs. Fit, measurements, trims, labels, wash test
-- [ ] If PAS passes: approve for production
-- [ ] Human Owner gives go/no-go
+- [ ] Revise tech pack with updated specs based on proto feedback
+- [ ] If yarn changed: order new cones and ship to factory
+- [ ] Issue revised proto purchase order
+- [ ] Repeat 1.10 review on new proto
 
-### 1.12 Place production PO (DAY 20-23)
-Lead: Procurement Lead, Commercial Finance Lead
-Dependencies: 1.11 PAS approved
+### 1.12 Size set samples (SMS) (after proto approval)
+Lead: Factory Sourcing Lead
+Dependencies: 1.10 proto approved (with or without minor revisions)
 
 Tasks:
-- [ ] Confirm final unit price
-- [ ] Confirm production lead time (negotiate express -- 30-35 days possible if factory has capacity)
-- [ ] Confirm MOQ per colourway
-- [ ] Confirm incoterms
-- [ ] Set payment milestones
-- [ ] Arrange deposit payment
-- [ ] Issue production PO
+- [ ] Once proto is approved: authorise factory to proceed to SMS
+- [ ] SMS = one sample in each size (XS, S, M, L, XL) -- usually 5-6 pieces per model
+- [ ] Yarn must be same as production yarn -- this is the first time you see the full size run
+- [ ] Confirm SMS delivery date (10-14 working days from authorisation)
+- [ ] On receipt: fit check every size, measure against graded spec table
+- [ ] Check grading consistency: does each size look and fit proportionally correct?
+- [ ] Wash test one garment from SMS for final shrinkage confirmation
+- [ ] Approve or revise: if minor fit issues, specify adjustments and go to revised SMS or direct to PP
 
-### 1.13 Lab testing (PARALLEL WITH PRODUCTION -- do not block)
+### 1.13 Wash & lab testing (PARALLEL WITH SMS)
 Lead: Quality & Certification Lead
-Dependencies: bulk yarn from production batch
+Dependencies: 1.10 proto approved (samples exist for testing)
 
 Tasks:
-- [ ] Ask factory to send 0.5m of knitted fabric from production yarn for lab testing
-- [ ] Test: pilling, shrinkage, colour fastness
-- [ ] If something fails: flag to factory for mid-production correction
-- [ ] If passes: document for compliance records
+- [ ] Send samples to lab for: pilling resistance test (ISO 12945-2 or ASTM D4970), dimensional stability/shrinkage (ISO 6330 or AATCC 135), colour fastness to washing (ISO 105-C10), colour fastness to rubbing (ISO 105-X12)
+- [ ] If fabric involves special finishing: test durability of finish
+- [ ] Document results per test per model
+- [ ] Flag any failures: negotiate with factory on root cause and fix
+- [ ] If tests pass: document for compliance and certification records
+
+### 1.14 Pre-production sample approval (PP)
+Leads: Factory Sourcing Lead, Quality & Certification Lead
+Dependencies: 1.12 SMS approved, 1.13 lab tests passed
+
+Tasks:
+- [ ] Authorise PP sample: 1 final garment made with bulk production settings, final approved yarn, final trims, final labels, final care labels, final packaging
+- [ ] PP is the "sealed sample" -- everything is locked
+- [ ] Factory records all machine settings (tension, take-down, stitch density) on PP sheet
+- [ ] On receipt: verify against every spec in tech pack. Check fit, measurements, trims, labels, packaging
+- [ ] If PP passes: sign off as approved for bulk production
+- [ ] Human Owner gives final go/no-go for production
+
+### 1.15 Prepare for production order
+Leads: Procurement Lead, Commercial Finance Lead
+Dependencies: 1.14 PP sample approved
+
+Tasks:
+- [ ] Confirm final production pricing with factory (may differ from sample quote)
+- [ ] Confirm production lead time (45-60 days from PO)
+- [ ] Confirm MOQ per colourway
+- [ ] Confirm incoterms and shipping schedule
+- [ ] Set payment milestones: deposit, progress payment, balance against BL
+- [ ] Arrange trade finance or cash for deposit
+- [ ] Prepare production PO ready for Phase 8 (Production Order)
