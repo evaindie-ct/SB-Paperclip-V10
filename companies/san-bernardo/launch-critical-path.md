@@ -27,20 +27,23 @@ NOTE on knitwear sampling reality:
 - Sampling is iterative: Proto (first knit) -> fit review -> revisions -> SMS (size set) -> wash tests -> PP (pre-production approval). Each round takes 5-14 working days.
 - From design freeze to bulk production ready: minimum ~8 weeks with good factory cooperation, assuming no major yarn or fit issues.
 
-### 1.1 Design review & finalisation
-Leads: Design Lead, Knitwear Technical Specialist, Template/Production Designer
-Dependencies: mood boards, design drafts, colour palette, silhouette direction (all exist)
+### 1.1 Create technical flat sketches (silhouettes)
+Leads: Template/Production Designer, Design Lead
+Dependencies: mood boards, design drafts, colour palette (exist as inspiration/reference)
+
+NOTE: You have mood boards, colour palette, and design drafts but NO proper silhouette sketches yet. Silhouettes must be created from scratch as clean vector technical flats before anything else can proceed.
 
 Tasks:
-- [ ] Review all silhouette sketches against yarn/stitch feasibility (what works on a knitting machine vs what was drawn)
-- [ ] Finalise stitch types per model: e.g. jersey, 1x1 rib, 2x2 rib, cable, links-links, jersey jacquard
-- [ ] Finalise gauge direction per model (3GG chunky, 7GG mid, 12GG fine, 14GG ultra-fine) based on desired weight and drape
-- [ ] For any jacquard/colourwork/intarsia designs: create pixel-accurate BMP files with reduced colour palette (max colours = number of yarn carriers the machine can handle per row)
-- [ ] For cable/stitch structure designs: draw stitch map or reference photo of the intended structure
-- [ ] Decide if fully-fashioned (panels knit to shape) or cut-and-sew (lower cost, bulkier seams)
-- [ ] Create technical flat sketches: front, back, side views, clean black-and-white line drawings with callouts for every detail (neckline, cuff, hem, pocket, button placket)
+- [ ] For each model: draw the silhouette from the design draft into a clean front-view flat sketch
+- [ ] Draw back view for each silhouette (shows neckline finish, shoulder seam, hem)
+- [ ] Draw side view if silhouette has unique depth features (oversized drape, dropped shoulder, side slits)
+- [ ] Vectorise all sketches (Adobe Illustrator .ai, or Inkscape .svg, or CorelDRAW) -- factories need vector files, not hand sketches or raster images
+- [ ] Add stitch callouts: indicate where ribbing is (cuffs, hem, neckline), where body stitch changes
+- [ ] Add measurement callout lines (HPS, chest width, body length, sleeve length guides)
+- [ ] For any jacquard/colourwork/intarsia models: create pixel-accurate BMP files with reduced colour palette (max colours = number of yarn carriers the machine can handle per row)
+- [ ] For cable/stitch structure designs: draw stitch map or provide reference photo of the intended structure
 - [ ] Annotate seam construction expectations: linked seams, overlock, or coverstitch
-- [ ] Human Owner reviews and signs off on final design direction for each model
+- [ ] Human Owner reviews and signs off on final silhouette and design direction for each model
 
 ### 1.2 Yarn sourcing & selection (CRITICAL PATH)
 Leads: Design Lead, Knitwear Technical Specialist, Factory Sourcing Lead
